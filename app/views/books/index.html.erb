@@ -3,7 +3,7 @@
 <% @books.each do |book| %>
 <div>
   <%= image_tag book.get_image %>
-  <p>Title <%= book.title %></p>
+  <p><%= link_to book.title, book_path(book.id) %></p>
   <p>Opinion <%= book.body %></p>
 </div>
 <% end %>
