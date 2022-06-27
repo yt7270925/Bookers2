@@ -4,7 +4,9 @@
   <%= image_tag @user.get_profile_image(100,100) %>
   <p>name <%= @user.name %></p>
   <p>introduction <%= @user.introduction %></p>
-  <div><%= link_to "User", edit_user_path(@user.id) %></div>
+  <% if @user == current_user %>
+    <div><%= link_to "User Edit", edit_user_path(@user) %></div>
+  <% end %>
 </div>
 
 <h1>New Book</h1>
