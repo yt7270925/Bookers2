@@ -2,7 +2,11 @@
 <h1>Book</h1>
 <% @books.each do |book| %>
 <div>
+  <%= image_tag book.get_image %>
+  <p>Title <%= book.title %></p>
+  <p>Opinion <%= book.body %></p>
 </div>
+<% end %>
 
 <!-- 新規投稿 -->
 <h1>New Book</h1>
