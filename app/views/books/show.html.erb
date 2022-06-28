@@ -1,11 +1,23 @@
 <h1>Book detail</h1>
 <div>
     <%= image_tag @book.get_image %>
-    <p>username <%= @book.user.name %></p>
+    <p><%= link_to @book.user.name, user_path(@book.user) %></p>
     <p><%= link_to @book.title, book_path(@book.id) %></p>
     <p>Opinion <%= @book.body %></p>
     <% if @book.user == current_user %>
-       <%= link_to "Edit", edit_book_path(@book) %>
-       <%= link_to "Destroy", book_path(@book), method: :delete %>
+       <%= link_to "Edit", edit_book_path(@book.id) %>
+       <%= link_to "Destroy", book_path(@book.id), method: :delete %>
     <% end %>
 </div>
+
+<h1>User info</h1>
+
+<!-- 新規投稿 -->
+<h1>New Book</h1>
+  <%= form_with model: @book do |f| %>
+    <h4>Title</h4>
+      <%= f.text_field :title %>
+    <h4>Opinion</h4>
+      <%= f.text_area :body %>
+    <div><%= f.submit 'Create Book' %></div>
+  <% end %>

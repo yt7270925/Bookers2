@@ -1,12 +1,10 @@
-<!-- ユーザーの詳細 -->
+
 <h1>User info</h1>
 <div>
   <%= image_tag @user.get_profile_image(100,100) %>
   <p>name <%= @user.name %></p>
   <p>introduction <%= @user.introduction %></p>
-  <% if @user == current_user %>
-    <div><%= link_to "User Edit", edit_user_path(@user) %></div>
-  <% end %>
+  <div><%= link_to "User Edit", edit_user_path(@user) %></div>
 </div>
 
 <h1>New Book</h1>
@@ -26,7 +24,7 @@
     <%= image_tag book.get_image %>
   <% end %>
   <p><%= image_tag book.user.get_profile_image(100,100) %></p>
-  <p>Title<%= link_to book.title, book_path(@book) %></p>
-  <p>Opinion<%= book.body %></p>
+  <p><%= link_to book.title, book_path(@user.books.ids) %></p>
+  <p><%= book.body %></p>
 </div>
 <% end %>

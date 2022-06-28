@@ -1,2 +1,25 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<!-- index -->
+<h1>Users</h1>
+<% @users.each do |user| %>
+<div>
+  <%= image_tag user.get_profile_image(100,100) %>
+  <p>name <%= user.name %></p>
+</div>
+<% end %>
+
+<h1>User info</h1>
+<div>
+  <%= image_tag user.get_profile_image(100,100) %>
+  <p>name <%= user.name %></p>
+  <p>introduction <%= user.introduction %></p>
+  <div><%= link_to "User Edit", edit_user_path(@user) %></div>
+</div>
+
+<h1>New Book</h1>
+  <%= form_with model: @book do |f| %>
+    <h4>Title</h4>
+      <%= f.text_field :title %>
+    <h4>Opinion</h4>
+      <%= f.text_area :body %>
+    <div><%= f.submit 'Create Book' %></div>
+  <% end %>
