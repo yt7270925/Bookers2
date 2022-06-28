@@ -11,10 +11,11 @@
   </head>
 
   <body>
+    <div><%= link_to 'Bookers', root_path %></div>
     <header>
       <% if user_signed_in? %>
         <li>
-          <%= link_to "Home", root_path %>
+          <%= link_to "Home", user_path %>
         </li>
         <li>
           <%= link_to "Users", users_path %>
