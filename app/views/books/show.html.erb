@@ -1,3 +1,8 @@
+<!-- userのupdate サクセスメッセージ -->
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
 <h1>Book detail</h1>
 <div>
     <%= image_tag @book.user.get_profile_image(100,100) %>

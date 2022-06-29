@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   # サインイン後の遷移先
   def after_sign_in_path_for(resource)
-    books_path #indexへのリダイレクト
+    user_path(current_user) #userのshowへのリダイレクト
   end
 
   # ログアウト後の遷移先 デフォルトはルートパスであるから後で消す
