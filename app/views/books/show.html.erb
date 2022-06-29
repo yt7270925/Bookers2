@@ -16,7 +16,7 @@
   <p>name <%= @book.user.name %></p>
   <p>introduction <%= @book.user.introduction %></p>
   <% if @user == current_user %>
-  <div><%= link_to "User Edit", edit_user_path(@book.user) %></div>
+    <div><%= link_to "User Edit", edit_user_path(@book.user) %></div>
   <% else %>
   <div><%= link_to "User Edit", user_path(current_user) %></div>
   <% end %>
