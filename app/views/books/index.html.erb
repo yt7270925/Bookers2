@@ -4,19 +4,16 @@
 <p>Opinion</p>
 <div>
   <% @books.each do |book| %>
-  <%= image_tag book.user.get_profile_image(100,100) %>
+  <%= link_to user_path(book.user.id) do %>
+    <%= image_tag book.user.get_profile_image(100,100) %>
+  <% end %>
   <p><%= link_to book.title, book_path(book) %></p>
   <p><%= book.body %></p>
 </div>
 <% end %>
 
-<h1>User info</h1>
-<div>
-  <%= image_tag current_user.get_profile_image(100,100) %>
-  <p>name <%= current_user.name %></p>
-  <p>introduction <%= current_user.introduction %></p>
-  <div><%= link_to "User Edit", edit_user_path(current_user) %></div>
-</div>
+<!-- 部分テンプレート User info1 -->
+<%= render 'info1' %>
 
 <!-- 部分テンプレート New Book -->
 <%= render 'list', book: @book %>

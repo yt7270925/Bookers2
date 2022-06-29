@@ -1,0 +1,8 @@
+<!--book,userのindexのuser info -->
+<h1>User info</h1>
+<div>
+  <%= image_tag current_user.get_profile_image(100,100) %>
+  <p>name <%= current_user.name %></p>
+  <p>introduction <%= current_user.introduction %></p>
+  <div><%= link_to "User Edit", edit_user_path(current_user) %></div>
+</div>
