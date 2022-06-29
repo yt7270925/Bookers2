@@ -1,10 +1,22 @@
+<h1>Books</h1>
+<% @books.each do |book| %>
+<div>
+  <p><%= image_tag book.user.get_profile_image(100,100) %></p>
+  <p><%= link_to book.title, book_path(@user.books.ids) %></p>
+  <p><%= book.body %></p>
+</div>
+<% end %>
 
 <h1>User info</h1>
 <div>
   <%= image_tag @user.get_profile_image(100,100) %>
   <p>name <%= @user.name %></p>
   <p>introduction <%= @user.introduction %></p>
+  <% if @user == current_user %>
   <div><%= link_to "User Edit", edit_user_path(@user) %></div>
+  <% else %>
+  <div><%= link_to "User Edit", user_path(current_user) %></div>
+  <% end %>
 </div>
 
 <h1>New Book</h1>
@@ -15,16 +27,3 @@
       <%= f.text_area :body %>
     <div><%= f.submit 'Create Book' %></div>
   <% end %>
-
-<!-- ユーザーの投稿一覧 -->
-<h1>Books</h1>
-<% @books.each do |book| %>
-<div>
-  <%= link_to book_path(book.id) do %>
-    <%= image_tag book.get_image %>
-  <% end %>
-  <p><%= image_tag book.user.get_profile_image(100,100) %></p>
-  <p><%= link_to book.title, book_path(@user.books.ids) %></p>
-  <p><%= book.body %></p>
-</div>
-<% end %>

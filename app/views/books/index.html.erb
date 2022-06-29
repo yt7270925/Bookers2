@@ -1,15 +1,19 @@
 <!-- index -->
 <h1>Books</h1>
-<% @books.each do |book| %>
+<p>title</p>
+<p>Opinion</p>
 <div>
-  <%= image_tag book.get_image %>
-  <p><%= link_to book.title, book_path(book.id) %></p>
-  <p>Opinion <%= book.body %></p>
+  <% @books.each do |book| %>
+  <%= image_tag book.user.get_profile_image(100,100) %>
+  <p><%= link_to book.title, book_path(book) %></p>
+  <p><%= book.body %></p>
 </div>
 <% end %>
 
 <h1>User info</h1>
-
+<%= image_tag current_user.get_profile_image(100,100) %>
+<p>name <%= current_user.name %></p>
+<p>introduction <%= current_user.introduction %></p>
 
 <!-- 新規投稿 -->
 <h1>New Book</h1>
