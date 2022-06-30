@@ -19,6 +19,8 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
       redirect_to user_path(@user.id) #userのshowページへのリダイレクト
+    else
+      render :edit
     end
   end
 

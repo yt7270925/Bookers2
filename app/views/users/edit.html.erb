@@ -1,4 +1,14 @@
 <h2>User info</h2>
+
+<% if @user.errors.any? %>
+  <%= @user.errors.count %> error prohibited this obj from being saved:
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @user do |f| %>
   <div for="inputName">Name</div>
   <%= f.text_field :name, autofocus: true, id: "inputName", placeholder: current_user.name %>

@@ -1,8 +1,13 @@
 class Book < ApplicationRecord
-  # has_one_attached :image
-
   # Userモデルとのアソシエーション
   belongs_to :user
+
+  validates :title, presence: true
+  # 最大200文字まで
+  validates :body, presence: true, length: { maximum: 200 }
+
+
+  # has_one_attached :image
 
   # # def get_image
   #   unless image.attached?

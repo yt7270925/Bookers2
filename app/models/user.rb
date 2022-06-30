@@ -4,6 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # 一意性を持たせかつ2~20文字
+  validates :name, uniqueness: true, length: { in: 2..20 }
+  # 最大50文字
+  validates :introduction, length: { maximum: 50 }
+
   # Bookモデルとのアソシエーション
   has_many :books, dependent: :destroy
 

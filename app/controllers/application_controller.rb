@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  # ログイン認証が成功していないとhome,aboutページにしか行けない設定
+  before_action :authenticate_user!, except: [:top, :about]
+
   # ログインで使う値から外したemailを許可する
   before_action :configure_permitted_parameters, if: :devise_controller?
 
