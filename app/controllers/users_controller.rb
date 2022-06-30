@@ -12,6 +12,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user == current_user # 他人のユーザー情報編集画面に遷移できない設定
+      render :edit
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
