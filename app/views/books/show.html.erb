@@ -15,11 +15,11 @@
   <%= image_tag @book.user.get_profile_image(100,100) %>
   <p>name <%= @book.user.name %></p>
   <p>introduction <%= @book.user.introduction %></p>
-  <% if @book.user == current_user %>
-    <div><%= link_to "User Edit", edit_user_path(@book.user) %></div>
-  <% else %>
-    <div><%= link_to "User Edit", user_path(current_user) %></div>
-  <% end %>
+  <div class="row">
+    <%= link_to edit_user_path(current_user) do %>
+      <i class="fas fa-user-cog edit"></i>
+    <% end %>
+  </div>
 </div>
 
 <!-- 部分テンプレート New Book -->
