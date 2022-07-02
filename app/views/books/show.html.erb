@@ -1,40 +1,47 @@
-<h1>Book detail</h1>
-<div>
-    <%= image_tag @book.user.get_profile_image(100,100) %>
-    <p><%= link_to @book.user.name, user_path(@book.user) %></p>
-    <p><%= link_to @book.title, book_path(@book.id) %></p>
-    <p><%= @book.body %></p>
-    <% if @book.user == current_user %>
-       <%= link_to "Edit", edit_book_path(@book.id) %>
-       <%= link_to "Destroy", book_path(@book.id), method: :delete %>
-    <% end %>
-</div>
-
-<div class="row">
-  <div class="col-md-3">
-    <h1>User info</h1>
-    <div>
-      <%= image_tag @book.user.get_profile_image(100,100) %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>name</th>
-            <th><%= @book.user.name %></th>
-          </tr>
-          <tr>
-            <th>introduction</th>
-            <th><%= @book.user.introduction %></th>
-          </tr>
-        </tbody>
-      </table>
-      <div class="row">
-        <%= link_to edit_user_path(current_user) do %>
-          <i class="fas fa-user-cog edit"></i>
-        <% end %>
+<main>
+  <p id="notice"></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 user-info">
+        <h1>User info</h1>
+        <%= image_tag @book.user.get_profile_image(100,100) %>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>name</th>
+              <th><%= @book.user.name %></th>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <th><%= @book.user.introduction %></th>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row">
+          <%= link_to edit_user_path(current_user) do %>
+            <i class="fas fa-user-cog edit"></i>
+          <% end %>
+        </div>
       </div>
+      <div class="col-md-8 offset-md-1">
+        <h1>Book detail</h1>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><%= image_tag @book.user.get_profile_image(100,100) %></td>
+              <td><%= link_to @book.title, book_path(@book.id) %></td>
+              <td><%= @book.body %></td>
+              <% if @book.user == current_user %>
+                 <%= link_to "Edit", edit_book_path(@book.id) %>
+                 <%= link_to "Destroy", book_path(@book.id), method: :delete %>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+        <div><%= link_to @book.user.name, user_path(@book.user) %></div>
+      </div>
+      <!-- 部分テンプレート New Book -->
+      <%= render 'list', book: @book %>
     </div>
   </div>
-</div>
-
-<!-- 部分テンプレート New Book -->
-<%= render 'list', book: @book %>
+</main>
