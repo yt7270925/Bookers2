@@ -18,7 +18,7 @@
           </tbody>
         </table>
         <div class="row">
-          <%= link_to edit_user_path(current_user) do %>
+          <%= link_to edit_user_path(@user) do %>
             <i class="fas fa-user-cog edit"></i>
           <% end %>
         </div>
@@ -35,7 +35,11 @@
           <tbody>
             <% @books.each do |book| %>
             <tr>
-              <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+              <td>
+                <%= link_to user_path(@user.id) do %>
+                  <%= image_tag book.user.get_profile_image(100,100) %>
+                <% end %>
+              </td>
               <td><%= link_to book.title, book_path(@user.books.ids) %></td>
               <td><%= book.body %></td>
             </tr>

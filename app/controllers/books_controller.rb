@@ -22,8 +22,8 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.new #showページでのnew
     @book = Book.find(params[:id])
+    @new_book = Book.new
   end
 
   def destroy
@@ -57,5 +57,7 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
+
+end
 
 end
